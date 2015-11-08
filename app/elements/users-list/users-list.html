@@ -8,7 +8,6 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/iron-list/iron-list.html">
 <link rel="import" href="../user-info/user-info.html">
 
 <dom-module id="users-list">
@@ -40,13 +39,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
     </style>
     <ul class="user_list">
-    <!--iron-list items="{{users}}" as="item"-->
       <template is="dom-repeat" items="{{users}}">
         <li class="user_list__item">
           <user-info user={{item.user}}></user-info>
         </li>
       </template>
-    <!--/iron-list-->
     </ul>
   </template>
 
