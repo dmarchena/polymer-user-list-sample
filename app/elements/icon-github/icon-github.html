@@ -25,10 +25,14 @@
             value: 'Github logo',
             notify: true
           },
+          link: {
+            type: String,
+            value: null
+          },
           title: {
             type: String,
             value: 'Go to Github'
-          }
+          },
         },
 
         listeners: {
@@ -36,7 +40,9 @@
         },
 
         regularTap: function () {
-          location.href = 'https://github.com/dmarchena/polymer-user-list-sample';
+          if (this.link !== null) {
+            location.href = this.link;
+          }
         }
 
       });
