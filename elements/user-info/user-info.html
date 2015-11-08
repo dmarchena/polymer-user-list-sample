@@ -1,0 +1,68 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="user-info">
+  <template>
+    <style type="text/css">
+      .user {
+        display: flex;
+        background: #ddd;
+        padding: 1rem;
+        text-transform: capitalize;
+      }
+        .user>header {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          order: 1;
+        }
+        .user__fullname {
+          font-size: 1.3em;
+        }
+        .user__fullname,
+        .user__location {
+          margin: 0;
+        }
+        .user__avatar {
+          margin: 0 1rem 0 0;
+        }
+          .user__avatar img {
+            border-radius: 100%;
+            box-shadow: 0 0 2px 1px black;
+            height: 64px;
+            width: 64px;
+          }
+    </style>
+    <section class="user">
+      <header>
+        <h3 class="user__fullname">{{user.name.first}} {{user.name.last}}</h3>
+        <p class="user__location">{{user.location.city}}, {{user.location.state}}</p>
+      </header>
+      <figure class="user__avatar">
+        <img src="{{user.picture.thumbnail}}" alt="{{user.name.first}} {{user.name.last}}" />
+      </figure>
+    </section>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+
+        is: 'user-info',
+
+        properties: {
+          user: {
+            type:  Object
+          }
+        },
+
+        handleResponse: function (event, request) {
+          this.users = request.response.results || [];
+        }
+
+      });
+    })();
+  </script>
+
+</dom-module>

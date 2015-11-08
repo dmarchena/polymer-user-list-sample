@@ -1,0 +1,37 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="users-data">
+  <template>
+    <iron-ajax
+      auto
+      url="http://api.randomuser.me/?results=10"
+      handle-as="json"
+      on-response="handleResponse"></iron-ajax>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+
+        is: 'users-data',
+
+        properties: {
+          users: {
+            type: Array,
+            value: [],
+            notify: true
+          }
+        },
+
+        handleResponse: function (e, request) {
+          this.users = request.response.results;
+        }
+
+      });
+    })();
+  </script>
+
+</dom-module>
